@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fafafa;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Premium Focus States */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* --- MOTION & ANIMATION LAYER --- */
+
+/* 1. Global Entrance Reveal Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animation Delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* 2. Staggered Viewport Scroll Reveals */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered transition delay on inner elements when section revealed */
+.revealed .stagger-1 { transition-delay: 100ms; }
+.revealed .stagger-2 { transition-delay: 200ms; }
+.revealed .stagger-3 { transition-delay: 300ms; }
+
+/* 3. Interactive Competency Pill Badges */
+.competency-card .skill-pill {
+  opacity: 0.8;
+  border-color: rgba(226, 232, 240, 0.8);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.competency-card:hover .skill-pill {
+  opacity: 1;
+  border-color: rgba(37, 99, 235, 0.25);
+  background-color: rgba(37, 99, 235, 0.02);
+}
+
+/* Staggered hover animations on cards */
+.competency-card:hover .skill-pill:nth-child(1) { transition-delay: 0ms; }
+.competency-card:hover .skill-pill:nth-child(2) { transition-delay: 50ms; }
+.competency-card:hover .skill-pill:nth-child(3) { transition-delay: 100ms; }
+.competency-card:hover .skill-pill:nth-child(4) { transition-delay: 150ms; }
+.competency-card:hover .skill-pill:nth-child(5) { transition-delay: 200ms; }
+
+/* Individual Badge hover highlight */
+.skill-pill:hover {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  color: #2563eb !important;
+  transform: translateY(-1px);
+}
+
+/* 4. Active Scholarly Hover States */
+.scholarly-card {
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scholarly-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.2) !important;
+  box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+/* Arrow Vector Translation */
+.arrow-icon {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scholarly-card:hover .arrow-icon {
+  transform: translate(2px, -2px);
+}
+
+/* 5. General interactive link smooth highlights */
+.interactive-link {
+  position: relative;
+}
+
+.interactive-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #2563eb;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-link:hover::after {
+  width: 100%;
+}
